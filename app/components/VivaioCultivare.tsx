@@ -122,6 +122,18 @@ export default function VivaioCultivare() {
   };
 
   // Filtri
+  const handleAddExpense = () => {
+    if (!newExpenseForm.description || !newExpenseForm.amount) return;
+    setExpenses([...expenses, {
+      id: Math.max(...expenses.map(e => e.id), 0) + 1,
+      description: newExpenseForm.description,
+      amount: parseFloat(newExpenseForm.amount),
+      date: new Date().toISOString().split("T")[0]
+    }]);
+    setNewExpenseForm({ description: "", amount: "" });
+    setShowNewExpense(false);
+  };
+
   const filteredOrders = useMemo(() => {
     let r = [...orders];
     if (orderFilter === 'pending') r = r.filter(o => o.status === 'pending');
