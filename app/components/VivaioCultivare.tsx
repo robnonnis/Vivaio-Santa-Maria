@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect, useMemo } from 'react';
 import { Plus, Trash2, Edit2, AlertCircle, ChevronLeft, Search, FileText, Clock } from 'lucide-react';
+import SchedePiante from './SchedePiante';
 
 type Plant = { id: number; name: string; type: string; stock: number; price: number; log: { date: string; change: number; newStock: number }[] };
 type OrderItem = { plantId: number; plantName: string; qty: number; unitPrice: number };
@@ -217,7 +218,7 @@ export default function VivaioCultivare() {
               <p className="mt-0.5 text-sm text-stone-500">Gestione inventario e ordinazioni</p>
             </div>
             <div className="flex gap-1 sm:gap-2">
-              {['inventory', 'orders', 'dashboard'].map(tab => (
+              {['inventory', 'orders', 'dashboard', 'schede'].map(tab => (
                 <button key={tab} onClick={() => { setActiveTab(tab); setInventoryCategory(null); setSearchQuery(''); }}
                   className={`px-3 py-2 text-sm font-medium transition-colors rounded-t ${activeTab === tab ? 'text-amber-900 border-b-2 border-amber-700' : 'text-stone-500 hover:text-stone-900'}`}>
                   {tab === 'inventory' ? '📦 Inventario' : tab === 'orders' ? '📋 Ordini' : '📊 Dashboard'}
@@ -676,6 +677,11 @@ export default function VivaioCultivare() {
               </div>
             </div>
           </div>
+        )}
+
+        {/* ── SCHEDE PIANTE ─────────────────────────────────────────────────── */}
+        {activeTab === 'schede' && (
+          <SchedePiante />
         )}
       </div>
     </div>
