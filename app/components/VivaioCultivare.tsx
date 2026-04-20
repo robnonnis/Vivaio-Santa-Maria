@@ -181,6 +181,7 @@ export default function VivaioCultivare() {
   const categories = [
     { key: 'ulivo', label: 'Ulivi', emoji: '🫒', bg: 'bg-green-50', border: 'border-green-200', hover: 'hover:bg-green-100', text: 'text-green-800', badge: 'bg-green-100 text-green-700', description: 'Cultivar di olivo' },
     { key: 'agrumi', label: 'Agrumi', emoji: '🍊', bg: 'bg-orange-50', border: 'border-orange-200', hover: 'hover:bg-orange-100', text: 'text-orange-800', badge: 'bg-orange-100 text-orange-700', description: 'Arance, limoni, mandarini' },
+    { key: 'fruttiferi', label: 'Fruttiferi', emoji: '🍑', bg: 'bg-pink-50', border: 'border-pink-200', hover: 'hover:bg-pink-100', text: 'text-pink-800', badge: 'bg-pink-100 text-pink-700', description: 'Alberi da frutto' },
     { key: 'altro', label: 'Altro', emoji: '🌿', bg: 'bg-stone-50', border: 'border-stone-200', hover: 'hover:bg-stone-100', text: 'text-stone-800', badge: 'bg-stone-100 text-stone-700', description: 'Altre varietà' },
   ];
   const currentCategory = categories.find(c => c.key === inventoryCategory);
@@ -221,7 +222,7 @@ export default function VivaioCultivare() {
               {['inventory', 'orders', 'dashboard', 'schede'].map(tab => (
                 <button key={tab} onClick={() => { setActiveTab(tab); setInventoryCategory(null); setSearchQuery(''); }}
                   className={`px-3 py-2 text-sm font-medium transition-colors rounded-t ${activeTab === tab ? 'text-amber-900 border-b-2 border-amber-700' : 'text-stone-500 hover:text-stone-900'}`}>
-                  {tab === 'inventory' ? '📦 Inventario' : tab === 'orders' ? '📋 Ordini' : '📊 Dashboard'}
+                  {tab === 'inventory' ? '📦 Inventario' : tab === 'orders' ? '📋 Ordini' : tab === 'dashboard' ? '📊 Dashboard' : '🌿 Schede piante'}
                 </button>
               ))}
             </div>
